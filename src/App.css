@@ -63,3 +63,9 @@ h4{
 #bookTable-section{
     scroll-margin-top: 0px;
 }
+
+.error{
+    color: red;
+    font-size: 12px;
+    margin-top: -7px;
+}

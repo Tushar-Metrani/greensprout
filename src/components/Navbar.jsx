@@ -45,8 +45,8 @@ export default function Navbar(props) {
                         <Link to="/home?section=hero" className="py-3 px-6 text-base">{props.l1}</Link>
                         <Link to="/home?section=about" className="py-3 px-6 text-base">{props.l2}</Link>
                         <Link to="/home?section=menu" className="py-3 px-6 text-base">{props.l3}</Link>
-                        <Link to="/bookTable#top" className="py-3 px-6 text-base">{props.l4}</Link>
-                        <Link to="/home?section=footer" className="py-3 px-6 text-base">{props.l5}</Link>
+                        <Link to="/bookTable?section=bookTable-section" className="py-3 px-6 text-base">{props.l4}</Link>
+                        <Links to="footer" smooth={true} className="py-3 px-6 text-base cursor-pointer">{props.l5}</Links>
                     </div>
                     <button className="py-3" onClick={() => navToggle(false)}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>

@@ -23,6 +23,118 @@
 
     <div id="herosection">
         <api>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</api>
+
+
+<!-- import React, { useState } from 'react';
+
+function ReservationForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    time: '',
+    people: '',
+    requests: '', // Optional
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Basic manual validation (in addition to HTML5)
+    const { name, email, phone, date, time, people } = formData;
+
+    if (!name || !email || !phone || !date || !time || !people) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+      alert('Phone number must be 10 digits.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/submit', {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      if (response.ok) {
+        alert('Form submitted successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          date: '',
+          time: '',
+          people: '',
+          requests: '',
+        });
+      } else {
+        alert('Submission failed.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name*:
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+      </label><br />
+
+      <label>
+        Email*:
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+      </label><br />
+
+      <label>
+        Phone*:
+        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required pattern="\d{10}" />
+      </label><br />
+
+      <label>
+        Date*:
+        <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+      </label><br />
+
+      <label>
+        Time*:
+        <input type="time" name="time" value={formData.time} onChange={handleChange} required />
+      </label><br />
+
+      <label>
+        People*:
+        <input type="number" name="people" value={formData.people} onChange={handleChange} required min="1" />
+      </label><br />
+
+      <label>
+        Special Requests (optional):
+        <textarea name="requests" value={formData.requests} onChange={handleChange}></textarea>
+      </label><br />
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default ReservationForm; -->
+
     </div>
     
 </body>

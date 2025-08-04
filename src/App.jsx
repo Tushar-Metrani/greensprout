@@ -1,27 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar.jsx';
-//import HeroSection from './components/Herosection.jsx';
-//import Menu from './components/Menu.jsx';
-//import Aboutsection from './components/aboutsection.jsx';
 import Homepage from './components/Homepage.jsx';
-import Footer from './components/footer.jsx';
 import BookTable from './components/booktable.jsx';
-//import HeroSection2 from './components/Herosection2.jsx';
 import { useLocation } from 'react-router-dom';
 import { useState ,useEffect} from 'react';
 import { BrowserRouter,Route,Routes,Navigate } from "react-router";
 import Status from './components/status.jsx';
 
-/* function Homepage(){
-  return(
-  <>
-  
-    <HeroSection2 />
-    <Aboutsection/>
-    <Menu/>
-  </>
-  )
-} */
 
 function ScrollToTop(){
   const { pathname } = useLocation();

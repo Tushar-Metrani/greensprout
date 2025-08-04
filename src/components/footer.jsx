@@ -32,13 +32,13 @@ export default function Footer() {
         <div className="flex flex-col quicksand-font">
           <h4 className="text-green-400 text-lg font-semibold mb-2">Quick Links</h4>
 
-          <Link to="/home?section=hero" className="hover:text-green-300 text-sm p-1 md:text-base">Home</Link>
+          <Link to="/home?section=hero" className="hover:text-green-300 p-1 text-base">Home</Link>
 
-          <Link to="/home?section=about" className="hover:text-green-300 text-sm p-1 md:text-base">About</Link>
+          <Link to="/home?section=about" className="hover:text-green-300 p-1 text-base">About</Link>
 
-          <Link to="/home?section=menu" className="hover:text-green-300 text-sm p-1 md:text-base">Menu</Link>
+          <Link to="/home?section=menu" className="hover:text-green-300 p-1 text-base">Menu</Link>
 
-          <Link to="/bookTable?section=bookTable-section" className="hover:text-green-300 text-sm p-1 md:text-base ">Book table</Link>
+          <Link to="/bookTable?section=bookTable-section" className="hover:text-green-300 p-1 text-base ">Book table</Link>
         </div>
 
         <div>
@@ -65,7 +65,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
         © 2025 The Green Sprout. All rights reserved. |
-        <a href="/privacy" className="text-green-300 hover:underline">Privacy Policy</a>
+        <a href="#" className="text-green-300 hover:underline">Privacy Policy</a>
       </div>
     </footer>
 
