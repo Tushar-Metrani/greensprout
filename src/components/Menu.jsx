@@ -24,9 +24,9 @@ export default function Menu(props) {
 
 
     return (
-        <div id="menu-section" className='flex flex-col lg:items-center bg-green-800 py-6 quicksand-font md:bg-green-800'>
+        <div id="menu-section" className='flex flex-col lg:items-center py-6 quicksand-font bg-gradient-to-br from-green-500 via-green-400 to-green-300'>
             <div id="pagetitle" className=''>
-                <h1 className='text-center text-2xl py-3 playfair-display-font text-gray-100 '>Menu</h1>
+                <h1 className='text-center text-2xl py-3 playfair-display-font text-gray-50 mozilla-headline'>Menu</h1>
             </div>
 
             <div id="menulist" className="px-2 py-2 sm:px-20">

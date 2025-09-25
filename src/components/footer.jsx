@@ -25,8 +25,8 @@ export default function Footer() {
 
         <div>
           <h4 className="text-green-400 text-lg font-semibold mb-4">Opening Hours</h4>
-          <p className="mb-1">Mon–Fri: 11:00 AM – 10:00 PM</p>
-          <p>Sat–Sun: 9:00 AM – 11:00 PM</p>
+          <p className="mb-1">Mon-Fri: 11:00 AM - 10:00 PM</p>
+          <p>Sat-Sun: 9:00 AM - 11:00 PM</p>
         </div>
 
         <div className="flex flex-col quicksand-font">

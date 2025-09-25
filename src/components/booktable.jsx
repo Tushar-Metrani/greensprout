@@ -1,14 +1,24 @@
 import Footer from "./footer"
 import { useLocation } from "react-router-dom";
 import useScrollToSection from "./useScrollToSection";
-import React, { useState } from 'react'
-
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { useEffect } from "react";
+import loading from "../assets/wave_loading.gif"
 export default function BookTable() {
+
+    useEffect(()=>{
+        fetch("http://127.0.0.1:8000/")
+        .catch(er=>{console.error("server did not respond",er)});
+    },[]);
+   
 
 
     const { pathname, search } = useLocation();
     const params = new URLSearchParams(search);
     const section = params.get('section');
+    const navigate = useNavigate();
+    const [isLoading,setIsLoading] = useState(false);
 
     useScrollToSection(section, pathname);
 
@@ -64,15 +74,15 @@ export default function BookTable() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
         }
-
+        setIsLoading(true);
         try {
-            const response = await fetch('/submit', {
+            const response = await fetch('http://127.0.0.1:8000/submit', {
                 method: 'POST',
                 body: new URLSearchParams(formData),
                 headers: {
@@ -80,8 +90,10 @@ export default function BookTable() {
                 },
             });
 
+            const data = await response.json();
+
             if (response.ok) {
-                alert('Form submitted successfully!');
+                //alert('Form submitted successfully!');
                 setFormData({
                     name: '',
                     email: '',
@@ -91,20 +103,31 @@ export default function BookTable() {
                     people: '',
                     requests: '',
                 });
-            } else {
-                alert('Submission failed.');
+                navigate("/booktable/status",{state:{status:data.status,message:data.message}});
+            } 
+            else {
+                //alert('Submission failed.');
+                navigate("/booktable/status",{state:{
+                    status:data.status,
+                    message:`Booking failed. Server responded with status ${data.message}.`
+                }});
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('An error occurred.');
+            //alert('An error occurred.');
+            navigate("/booktable/status",{state:{
+                status:"failure",
+                message:"Booking failed due to a network or server error."
+            }});
         }
     };
 
 
     return (
         <>
-            <div id="bookTable-section" className="flex flex-col items-center pt-5 pb-10 bg-green-100 quicksand-font">
-                <h3 className="text-xl text-center mb-3 font-bold playfair-display-font">Book a Table</h3>
+            { !isLoading && (<>
+            <div id="bookTable-section" className="flex flex-col items-center pt-5 pb-10 bg-gradient-to-r from-green-100 via-green-200 to-green-300 quicksand-font">
+                <h3 className="text-xl text-center mb-3 font-bold mozilla-headline">Book a Table</h3>
                 <form id="booking-form" onSubmit={handleSubmit} className="flex flex-col justify-center items-center" noValidate>
 
                     <div id="input-fields" className="flex flex-row flex-wrap justify-center lg:justify-between space-y-5">
@@ -149,12 +172,19 @@ export default function BookTable() {
 
                     <button type="submit" className="bg-green-700 text-white w-35 px-2 py-1 m-5 rounded-4xl text-lg border-green-300 border-3 hover:bg-green-500 hover:text-gray-900">Book Now</button>
                 </form>
+                
             </div>
-            <div id="footer">
+            
+            <div id="footer" className="">
                 <Footer />
             </div>
-
-
+            
+            </>)}
+            {isLoading && (
+            <div id="loading" className="flex justify-center items-center min-h-[calc(100vh-100px)]">
+                <img src={loading} alt="loading" className="w-40"/>
+            </div>
+            )}
         </>
     )
 }

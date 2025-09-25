@@ -20,32 +20,21 @@ function ScrollToTop(){
 }
 
 function App() {
-
-  const[theme,toggleTheme]=useState("light");
-
-  const themeToggle=()=>{
-      if(theme==="light"){
-        toggleTheme("dark");
-        console.log("dark");
-      }
-      else{
-        toggleTheme("light");
-        console.log("light");
-
-      }
-  }
+  
   return (
     <>
       <BrowserRouter>
       <ScrollToTop/>
+      <div id="github-profile">
+        
+      </div>
       <Navbar logo="logo.png" l1="Home" l2="About" l3="Menu" l4="Book Table" l5="Contact"/>
-      <hr className='sm:hidden'/>
       <Routes>
       <Route path="*" element={<Navigate to="/home" replace/>}/>
       <Route path="/" element={<Navigate to="/home" replace/>}/>
       <Route path="/home" element={<Homepage/>} />
-      <Route path="/bookTable" element={<BookTable/>}/>
-      <Route path="/bookTable/status" element={<Status/>}/>
+      <Route path="/booktable" element={<BookTable/>}/>
+      <Route path="/booktable/status" element={<Status/>}/>
       </Routes>
       </BrowserRouter>
     </>
