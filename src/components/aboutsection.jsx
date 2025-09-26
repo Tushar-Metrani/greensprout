@@ -14,7 +14,7 @@ export default function Aboutsection(){
 
           <h2 className='text-2xl hidden md:block playfair-display-font md:text-2xl mozilla-headline'>About us</h2>
 
-        <p className='text-justify text-[15px] quicksand-font max-w-[580px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[700px] md:my-5 md:text-base'>
+        <p className='text-justify text-sm quicksand-font max-w-[580px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[700px] md:my-5 md:text-base'>
           Hello from the team at The Green Sprout! Our journey began with a simple idea: to create a space where people could enjoy incredibly tasty food that also happens to be vegan. We pour our hearts into every dish, from sourcing the freshest ingredients to crafting recipes that are both familiar and exciting. We want The Green Sprout to be more than just a restaurant; it's a place where you can feel good about what you're eating and enjoy a welcoming, community-focused atmosphere.
         </p>
 
