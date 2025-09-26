@@ -23,15 +23,15 @@ function App() {
   
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/greensprout">
       <ScrollToTop/>
       <div id="github-profile">
         
       </div>
       <Navbar logo="logo.png" l1="Home" l2="About" l3="Menu" l4="Book Table" l5="Contact"/>
       <Routes>
-      <Route path="*" element={<Navigate to="/home" replace/>}/>
-      <Route path="/" element={<Navigate to="/home" replace/>}/>
+      <Route path="*" element={<Navigate to="home" replace/>}/>
+      <Route path="/" element={<Navigate to="home" replace/>}/>
       <Route path="/home" element={<Homepage/>} />
       <Route path="/booktable" element={<BookTable/>}/>
       <Route path="/booktable/status" element={<Status/>}/>
