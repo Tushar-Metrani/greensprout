@@ -1,0 +1,78 @@
+[
+  {
+    "category": "Starters",
+    "items": [
+      {
+        "name": "Vegan Spring Rolls",
+        "description": "Crispy rolls stuffed with cabbage, carrots, and glass noodles.",
+        "price": 5.99,
+        "tags": ["Vegan"],
+        "image": "vegan-spring-rolls-2.jpg"
+      },
+      {
+        "name": "Avocado Toast",
+        "description": "Toasted sourdough with smashed avocado, lemon, and chili flakes.",
+        "price": 6.5,
+        "tags": ["Vegan"],
+        "image": "avocado-toast.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Mains",
+    "items": [
+      {
+        "name": "Vegan Buddha Bowl",
+        "description": "Quinoa, roasted veggies, hummus, and tahini dressing.",
+        "price": 12.99,
+        "tags": ["Vegan", "Gluten-Free"],
+        "image": "buddha-bowl.jpg"
+      },
+      {
+        "name": "Vegan Pad Thai",
+        "description": "Rice noodles stir-fried with tofu, peanuts, and tamarind sauce.",
+        "price": 11.99,
+        "tags": ["Vegan", "Spicy"],
+        "image": "vegan-pad-thai.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Desserts",
+    "items": [
+      {
+        "name": "Vegan Chocolate Mousse",
+        "description": "Rich mousse made with avocado, cocoa, and maple syrup.",
+        "price": 6.0,
+        "tags": ["Vegan", "Gluten-Free"],
+        "image": "vegan-chocolate-mousse.jpg"
+      },
+      {
+        "name": "Coconut Chia Pudding",
+        "description": "Creamy coconut milk chia pudding topped with berries.",
+        "price": 5.5,
+        "tags": ["Vegan", "Gluten-Free"],
+        "image": "coconut-chia-pudding.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Drinks",
+    "items": [
+      {
+        "name": "Green Smoothie",
+        "description": "Kale, spinach, banana, and almond milk.",
+        "price": 4.99,
+        "tags": ["Vegan"],
+        "image": "green-smoothie.jpg"
+      },
+      {
+        "name": "Iced Oat Milk Latte",
+        "description": "Cold espresso with oat milk over ice.",
+        "price": 4.5,
+        "tags": ["Vegan"],
+        "image": "iced-oat-milk-latte.jpg"
+      }
+    ]
+  }
+]
