@@ -1,5 +1,5 @@
 
-# 🌱 TheGreenSprout
+# 🌱 [TheGreenSprout](https://tushar-metrani.github.io/greensprout/home)
 
 This is a responsive restaurant website built using **React (Vite)** and **Tailwind CSS**. It features a clean design, a mobile-friendly layout, and a functional table booking system. Booking requests are validated on the **client side** and then sent to a **FastAPI backend**, which sends email confirmations using the **Brevo API**.
 
@@ -105,7 +105,7 @@ The backend handles:
 * Table booking form submission
 * Sending confirmation emails using **Brevo API**
 
-👉 [**View FastAPI Backend Repo**](https://github.com/tushar-metrani/table-booking-fastapi)
+👉 [**View FastAPI Backend Repo**](https://github.com/tushar-metrani/book-table-fastapi)
 
 ---
 
