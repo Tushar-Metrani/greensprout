@@ -1,28 +1,25 @@
-import logo from "../assets/logo2.png"
+import logo from "../assets/logo2-nobg.webp"
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import {Link } from "react-router";
 import {Link as Links} from "react-scroll";
 
 
 export default function Navbar(props) {
 
-    const {pathname} = useLocation();
     const [navDisplay, navToggle] = useState(false);
-    //console.log(pathname);
 
     return (
         <>
-            <div id="Navbar" className="flex items-center bg-white justify-between py-2 px-5 md:px-10 shadow-md md:justify-between sticky top-0 z-3 quicksand-font mozilla-headline">
+            <div id="Navbar" className="flex items-center bg-gray-100 justify-between py-2 px-5 md:px-10 shadow-md md:justify-between sticky top-0 z-3 quicksand-font">
 
                 <div id="toggle" className="flex sm:hidden order-2 w-max h-max">
-                    <button className="m-0 p-0" onClick={() => navToggle(true)}>
+                    <button className="m-0 p-0" aria-label="ToggleMenuButton" onClick={() => navToggle(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg>
                     </button>
                 </div>
 
-                <div id="logo" className="w-35 md:w-2/11 lg:w-15/100">
-                    <img src={logo}></img>
+                <div id="logo" className="w-25 sm:w-35 md:w-18/100 lg:w-12/100">
+                    <img src={logo} alt="TheGreenSprout Logo"></img>
                 </div>
 
                 <div id="menu-links" className="text-gray-800 hidden flex-col items-center w-80 md:w-100 sm:flex-row sm:flex">

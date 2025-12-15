@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import useScrollToSection from "./useScrollToSection";
-import HeroSection2 from "./Herosection2";
 import HeroSection from "./Herosection";
-import Aboutsection from "./aboutsection";
+import Aboutsection from "./Aboutsection";
 import Menu from "./Menu";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 
 const Homepage = () =>{
@@ -16,7 +15,7 @@ const Homepage = () =>{
 
     return(
         <>
-        <div id="hero">{<><HeroSection2/> <HeroSection/></>}</div>
+        <div id="hero">{<HeroSection/>}</div>
         <div id="about">{<Aboutsection/>}</div>
         <div id="menu">{<Menu/>}</div>
         <div id="footer">{<Footer/>}</div>

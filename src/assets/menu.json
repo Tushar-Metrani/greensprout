@@ -7,14 +7,14 @@
         "description": "Crispy rolls stuffed with cabbage, carrots, and glass noodles.",
         "price": 5.99,
         "tags": ["Vegan"],
-        "image": "vegan-spring-rolls-2.jpg"
+        "image": "vegan-spring-rolls-2.webp"
       },
       {
         "name": "Avocado Toast",
         "description": "Toasted sourdough with smashed avocado, lemon, and chili flakes.",
         "price": 6.5,
         "tags": ["Vegan"],
-        "image": "avocado-toast.jpg"
+        "image": "avocado-toast.webp"
       }
     ]
   },
@@ -26,14 +26,14 @@
         "description": "Quinoa, roasted veggies, hummus, and tahini dressing.",
         "price": 12.99,
         "tags": ["Vegan", "Gluten-Free"],
-        "image": "buddha-bowl.jpg"
+        "image": "buddha-bowl.webp"
       },
       {
         "name": "Vegan Pad Thai",
         "description": "Rice noodles stir-fried with tofu, peanuts, and tamarind sauce.",
         "price": 11.99,
         "tags": ["Vegan", "Spicy"],
-        "image": "vegan-pad-thai.jpg"
+        "image": "vegan-pad-thai.webp"
       }
     ]
   },
@@ -45,14 +45,14 @@
         "description": "Rich mousse made with avocado, cocoa, and maple syrup.",
         "price": 6.0,
         "tags": ["Vegan", "Gluten-Free"],
-        "image": "vegan-chocolate-mousse.jpg"
+        "image": "vegan-chocolate-mousse.webp"
       },
       {
         "name": "Coconut Chia Pudding",
         "description": "Creamy coconut milk chia pudding topped with berries.",
         "price": 5.5,
         "tags": ["Vegan", "Gluten-Free"],
-        "image": "coconut-chia-pudding.jpg"
+        "image": "coconut-chia-pudding.webp"
       }
     ]
   },
@@ -64,14 +64,14 @@
         "description": "Kale, spinach, banana, and almond milk.",
         "price": 4.99,
         "tags": ["Vegan"],
-        "image": "green-smoothie.jpg"
+        "image": "green-smoothie.webp"
       },
       {
         "name": "Iced Oat Milk Latte",
         "description": "Cold espresso with oat milk over ice.",
         "price": 4.5,
         "tags": ["Vegan"],
-        "image": "iced-oat-milk-latte.jpg"
+        "image": "iced-oat-milk-latte.webp"
       }
     ]
   }
