@@ -3,18 +3,19 @@ import { useLocation } from "react-router";
 import useScrollToSection from "./useScrollToSection";
 import { useNavigate } from "react-router";
 import { useState } from 'react'
-import { useEffect } from "react";
+
+
+function inRange(value,min,max){
+    return value>=min && value<=max;
+}
 
 export default function BookTable() {
+    const date = new Date();
+    const localDate = date.toLocaleDateString("en-CA");
+    const [day,setDay] = useState(date.getDay());
+    //const [serverReady,setServerReady] = useState(props.serverStatus);
 
     const API_URL = import.meta.env.VITE_API_URL;
-
-    useEffect(()=>{
-        fetch(`${API_URL}/wakeup`)
-        .catch(er=>{console.error("server did not respond",er)});
-    },[]);
-   
-
 
     const { pathname, search } = useLocation();
     const params = new URLSearchParams(search);
@@ -28,7 +29,7 @@ export default function BookTable() {
         name: '',
         email: '',
         phone: '',
-        date: '',
+        date: localDate,
         time: '',
         people: '',
         requests: '',
@@ -37,7 +38,18 @@ export default function BookTable() {
     const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
+        
         const { name, value } = e.target;
+        if(name === "date"){
+            const date = new Date(value);
+            setDay(date.getDay());
+            //console.log(date.toLocaleDateString("en-CA"));
+            setErrors((prev)=>({
+                ...prev,
+                ["time"]:'',
+            }));
+            console.log(errors);
+        }
         setFormData((prev) => ({
             ...prev,
             [name]: value,
@@ -49,6 +61,10 @@ export default function BookTable() {
     };
 
     const validate = () => {
+        const currentTime = date.toLocaleTimeString().slice(0,5);
+        console.log(currentTime);
+        console.log(formData.time);
+        const selectedDate = new Date(formData.date);
         const newErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -65,8 +81,22 @@ export default function BookTable() {
             newErrors.phone = 'Phone must be 10 digits.';
         }
 
-        if (!formData.date) newErrors.date = 'Date is required.';
-        if (!formData.time) newErrors.time = 'Time is required.';
+        if (!formData.date) newErrors.date = "Date is required.";
+        if (formData.date<localDate) newErrors.date = "Select valid date.";
+        if (!formData.time) newErrors.time = "Time is required.";
+
+        if((formData.time<"11:00" || formData.time>"22:00") && inRange(day,1,5) ){
+            newErrors.time ="Mon-Fri(11:00 AM - 10:00pm)";
+        }
+
+        if((formData.time<"10:00" || formData.time>"23:00") && (day==6 || day==0)){
+            newErrors.time ="Sat-Sun(10:00 AM - 11:00pm)";
+        }
+
+        if (formData.time<currentTime &&   selectedDate === localDate) {
+            newErrors.time = "Select valid time.";
+        }
+
         if (!formData.people || parseInt(formData.people) < 1) {
             newErrors.people = 'At least 1 person is required.';
         }
@@ -82,6 +112,9 @@ export default function BookTable() {
             setErrors(validationErrors);
             return;
         }
+        /* if (!serverReady){
+            return;
+        } */
         setIsLoading(true);
         try {
             const response = await fetch(`${API_URL}/submit`, {
@@ -128,45 +161,49 @@ export default function BookTable() {
     return (
         <>
             { !isLoading && (<>
-            <div id="bookTable-section" className="flex flex-col items-center pt-5 pb-10 bg-gradient-to-br
+            <div id="bookTable-section" className="flex flex-col pt-5 pb-10 bg-gradient-to-br
              from-green-50 via-green-100 to-green-100 quicksand-font text-black">
+
                 <h3 className="text-xl text-center mb-3 font-bold mozilla-headline">Book a Table</h3>
+
                 <form id="booking-form" onSubmit={handleSubmit} className="flex flex-col justify-center items-center" noValidate>
 
                     <div id="input-fields" className="flex flex-row flex-wrap justify-center lg:justify-between space-y-5">
 
-                        <div id="personal-details" className="flex flex-col px-6 sm:m-5 w-85 sm:w-100 md:w-118 space-y-3 bg-white py-7 sm:px-10 rounded-md shadow-md">
+                        <div id="personal-details" className="flex flex-col px-5 sm:m-5 w-85 sm:w-100 md:w-118 space-y-3 bg-white py-7 sm:px-10 rounded-md shadow-md">
                             <h3 className="font-bold sm:text-lg">Personal Details: </h3>
 
                             <div className="flex flex-col space-y-3 lg:relative lg:top-[30px] z-0">
 
                                 <label htmlFor="name">Full Name:</label>
-                                <input type="text" id="name" className="bg-white  text-gray-700 border-gray-600 border-1 px-1 rounded" name="name" value={formData.name} onChange={handleChange} required />
+                                <input type="text" id="name" className="bg-white text-gray-700 border-1 px-1 rounded" name="name" value={formData.name} onChange={handleChange} required />
                                 {errors.name && <div className="error">{errors.name}</div>}
 
                                 <label htmlFor="email">Email Address:</label>
-                                <input type="email" id="email" className="bg-white text-gray-700 border-gray-600 border-1 px-1 rounded" name="email" value={formData.email} onChange={handleChange} required />
+                                <input type="email" id="email" className="bg-white text-gray-700 border-1 px-1 rounded" name="email" value={formData.email} onChange={handleChange} required />
                                 {errors.email && <div className="error">{errors.email}</div>}
 
                                 <label htmlFor="phone">Phone Number:</label>
-                                <input type="tel" id="phone" className="bg-white text-gray-700 border-gray-600 border-1 px-1 rounded" name="phone" value={formData.phone} onChange={handleChange} required />
+                                <input type="tel" id="phone" className="bg-white text-gray-700 border-1 px-1 rounded" name="phone" value={formData.phone} onChange={handleChange} required />
                                 {errors.phone && <div className="error">{errors.phone}</div>}
                             </div>
                         </div>
 
-                        <div id="booking-details" className="flex flex-col px-6 sm:m-5 w-85 sm:w-100 md:w-118 space-y-2 bg-white py-7 sm:px-10 rounded-md shadow-md">
+                        <div id="booking-details" className="flex flex-col px-5 sm:m-5 w-85 sm:w-100 md:w-118 space-y-2 bg-white py-7 sm:px-10 rounded-md shadow-md">
                             <h3 className="font-bold sm:text-lg">Booking Details: </h3>
 
                             <label htmlFor="date">Reservation Date:</label>
-                            <input type="date" id="date" className="bg-white text-gray-700 border-gray-600 border-1 px-1 rounded" name="date" value={formData.date} onChange={handleChange} required />
+                            <input type="date" id="date" className="bg-white text-gray-700 border-1 px-1 rounded" name="date" min={localDate} value={formData.date} onChange={handleChange} required />
                             {errors.date && <div className="error">{errors.date}</div>}
 
                             <label htmlFor="time">Reservation Time:</label>
-                            <input className="bg-white text-gray-700 border-gray-600 border-1 px-1 rounded" type="time" id="time" name="time" value={formData.time} onChange={handleChange} required />
+
+                            <input className="bg-white text-gray-700 border-1 px-1 rounded" type="time" id="time" name="time" min="12:00" value={formData.time} onChange={handleChange} required />
+
                             {errors.time && <div className="error">{errors.time}</div>}
 
                             <label htmlFor="people">Number of Guests:</label>
-                            <input className="bg-white text-gray-700 border-gray-600 border-1 px-1 rounded" type="number" id="people" name="people" min="1" value={formData.people} onChange={handleChange} required />
+                            <input className="bg-white text-gray-700 border-1 px-1 rounded" type="number" id="people" name="people" min="1" value={formData.people} onChange={handleChange} required />
                             {errors.people && <div className="error">{errors.people}</div>}
 
                             <label htmlFor="requests">Special Requests:</label>
@@ -175,7 +212,7 @@ export default function BookTable() {
 
                     </div>
 
-                    <button type="submit" className="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 rounded-base text-base px-4 py-2.5 text-center leading-5 rounded-md font-semibold mt-5 shadow-md">Book Now</button>
+                    <button type="submit" className={`text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 rounded-base text-base px-4 py-2.5 text-center leading-5 rounded-md font-semibold mt-5 shadow-md`}>Book Now</button>
                 </form>
                 
             </div>
@@ -186,8 +223,9 @@ export default function BookTable() {
             
             </>)}
             {isLoading && (
-            <div id="loading" className="flex justify-center items-center min-h-[calc(100vh-100px)]">
+            <div id="loading" className="flex flex-col justify-center items-center min-h-[calc(100vh-100px)]">
                 <img src="/greensprout/images/wave_loading.gif" alt="loading" className="w-40" loading="lazy"/>
+                <p className="text-center text-wrap px-5">Please Wait render server is cold starting this may take few seconds/minutes</p>
             </div>
             )}
         </>

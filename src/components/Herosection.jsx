@@ -18,7 +18,7 @@ export default function HeroSection() {
                 </p>
                 
 
-                <div id="action-btns" className=" text-base md:text-lg flex my-5 items-center mt-10 md:mt-12 lg:mt-13 z-2 relative">
+                <div id="action-btns" className=" text-sm sm:text-base md:text-lg flex my-5 items-center mt-10 md:mt-12 lg:mt-13 z-2 relative">
 
                     <Link to="/home?section=menu" className=" px-3 py-2 md:px-4 md:py-3 text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br rounded-base text-center leading-5 rounded-md font-semibold shadow-md font-mono">View menu</Link>
                     

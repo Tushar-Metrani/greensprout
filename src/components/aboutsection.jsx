@@ -1,4 +1,4 @@
-import teamphoto from '../../src/assets/Chefs_photo.webp';
+import teamphoto from '../assets/Chefs_photo.webp';
 export default function Aboutsection(){
     return(
         

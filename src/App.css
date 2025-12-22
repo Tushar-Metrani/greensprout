@@ -70,3 +70,15 @@ h4 {
     );
     }
 }
+
+@media  screen and (max-width:360px) {
+
+    form #personal-details {
+        width: 310px;
+    }
+
+    form #booking-details {
+        width: 310px;
+    }
+    
+}

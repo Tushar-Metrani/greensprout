@@ -10,7 +10,7 @@ export default function Navbar(props) {
 
     return (
         <>
-            <div id="Navbar" className="flex items-center bg-gray-100 justify-between py-2 px-5 md:px-10 shadow-md md:justify-between sticky top-0 z-3 quicksand-font">
+            <div id="Navbar" className="flex items-center bg-gray-50 justify-between py-2 px-5 md:px-10 shadow-md md:justify-between sticky top-0 z-3 quicksand-font">
 
                 <div id="toggle" className="flex sm:hidden order-2 w-max h-max">
                     <button className="m-0 p-0" aria-label="ToggleMenuButton" onClick={() => navToggle(true)}>
@@ -18,7 +18,7 @@ export default function Navbar(props) {
                     </button>
                 </div>
 
-                <div id="logo" className="w-25 sm:w-35 md:w-18/100 lg:w-12/100">
+                <div id="logo" className="w-35 sm:w-35 md:w-18/100 lg:w-12/100">
                     <img src={logo} alt="TheGreenSprout Logo"></img>
                 </div>
 
@@ -36,7 +36,7 @@ export default function Navbar(props) {
 
                 </div>
 
-                <div id="sm-menu-links" className={`${navDisplay === false ? "hidden" : ""} text-gray-800 flex flex-row items-start fixed sm:hidden bg-gray-200 right-0 top-0 w-44 h-70 pb-2 pt-1`}>
+                <div id="sm-menu-links" className={`${navDisplay === false ? "hidden" : ""} text-gray-800 flex flex-row items-start fixed sm:hidden bg-gray-100 right-0 top-0 w-44 h-70 pb-2 pt-1 shadow-md rounded-md m-1`}>
 
                     <div className="flex flex-col items-left pb-2 pt-6">
                         <Link to="/home?section=hero" className="py-3 px-6 text-base">{props.l1}</Link>

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar.jsx';
 import Homepage from './components/Homepage.jsx';
 import BookTable from './components/Booktable.jsx';
 import { useLocation } from 'react-router-dom';
-import { useEffect} from 'react';
+import { useState,useEffect} from 'react';
 import { BrowserRouter,Route,Routes,Navigate } from "react-router";
 import Status from './components/Status.jsx';
 
@@ -19,6 +19,34 @@ function ScrollToTop(){
 }
 
 function App() {
+  const [serverReady,setServerReady] = useState(false);
+
+  const API_URL = import.meta.env.VITE_API_URL;
+
+    useEffect(()=>{
+        const controller = new AbortController();
+        let mounted = true;
+
+        (async () => {
+            for (let i = 0; i< 3; i++) {  
+            try{
+                await fetch(`${API_URL}/wakeup`,{signal:controller.signal})
+                if(mounted) setServerReady(true);
+                return;
+            }
+            catch(err){
+                if(err.name==="AbortError") return;
+
+                await new Promise(r=>setTimeout(r,30000));
+            }
+        }
+        })();
+        return ()=> {
+            mounted = false;
+            controller.abort();
+        };    
+
+    },[]);
   
   return (
     <>
